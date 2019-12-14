@@ -2,7 +2,12 @@ ARG CUDA_VERSION=10.2
 FROM nvidia/cudagl:${CUDA_VERSION}-devel-ubuntu18.04
 LABEL maintainer "yuma.hiramatsu <yuma.hiramatsu@gmail.com>"
 
+RUN apt-key adv --keyserver keys.gnupg.net --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE \
+ || apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    software-properties-common \
+ && add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo bionic main" -u \
+ && apt-get update && apt-get install -y --no-install-recommends \
     cmake \
     freeglut3-dev \
     git \
@@ -10,6 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjpeg-dev \
     libgl1-mesa-dev \
     libglew-dev \
+    librealsense2-dev \
+    librealsense2-dkms \
+    librealsense2-utils \
     libsuitesparse-dev \
     libudev-dev \
     libusb-1.0-0-dev \
@@ -33,10 +41,14 @@ RUN git clone https://github.com/occipital/OpenNI2.git \
 RUN ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen \
  && ln -sf /usr/include/eigen3/unsupported /usr/include/unsupported
 
-RUN git clone https://github.com/mp3guy/ElasticFusion.git \
+RUN git clone https://github.com/Daichou/ElasticFusion.git \
  && cd ElasticFusion/Core \
- && mkdir build && cd build && cmake ../src && make -j8 \
+ && mkdir build && cd build \
+ && cmake ../src \
+ && make -j8 \
  && cd ../../GUI \
- && mkdir build && cd build && cmake ../src && make -j8
+ && mkdir build && cd build \
+ && cmake -DWITH_REALSENSE=ON ../src \
+ && make -j8
 
 WORKDIR /workspace

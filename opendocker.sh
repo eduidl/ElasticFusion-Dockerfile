@@ -9,8 +9,11 @@ fi
 
 docker run -it --rm \
   --net host \
+  --privileged \
   --gpus all \
   -e DISPLAY=$DISPLAY \
   -v $HOME/.Xauthority:/root/.Xauthority \
+  -v /dev:/dev \
+  -v `pwd`/workspace:/workspace/ \
   $1 \
   bash
