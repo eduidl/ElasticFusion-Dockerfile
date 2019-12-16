@@ -51,4 +51,6 @@ RUN git clone https://github.com/Daichou/ElasticFusion.git \
  && cmake -DWITH_REALSENSE=ON ../src \
  && make -j8
 
+ENV PATH $PATH:/opt/ElasticFusion/GUI/build/
+
 WORKDIR /workspace
