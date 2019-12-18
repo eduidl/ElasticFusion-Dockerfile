@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a6fe2125e2bec99b16cc0a0a70072343102586fa820dc4865e4f0a1affb259ad"
+            "sha256": "6108585d1cf087ca621c33b25483debb28b7ed60bb3626364a46e8c98614722c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -222,7 +222,6 @@
                 "sha256:f58913e9227400f1395c7b800503ebfdb0772f1c33ff8cb4d6451c06cabdf316",
                 "sha256:fe39f5fd4103ec4ca3cb8600b19216cd1ff316b4990f4c0b6057ad982c0a34d5"
             ],
-            "index": "pypi",
             "version": "==1.17.4"
         },
         "open3d": {

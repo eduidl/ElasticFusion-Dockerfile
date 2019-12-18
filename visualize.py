@@ -1,7 +1,6 @@
 import argparse
 from pathlib import Path
 
-import numpy as np
 import open3d as o3d
 
 
