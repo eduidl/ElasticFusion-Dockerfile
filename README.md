@@ -1,11 +1,40 @@
 # ElasticFusion Dockerfile
+
 Dockerfile for use of [ElasticFusion](https://github.com/mp3guy/ElasticFusion)
+
+## Requirements
+
+- Docker
+  - from: https://docs.docker.com/get-docker/
+- NVIDIA Container Toolkit
+  - from: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+
+### My environment (ref.)
+
+- Ubuntu 20.04
+- CUDA 11.2 (host)
+
+```
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1080    On   | 00000000:01:00.0  On |                  N/A |
+| 46%   52C    P2    67W / 180W |   3900MiB /  8116MiB |     26%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+```
 
 ## Docker build and run
 
 ```terminal
 $ docker build -t <image_name> ./docker
+$ xhost local:
 $ ./opendocker.sh <image_name>
+$ xhost -local:
 ```
 
 ## Run with RealSense
