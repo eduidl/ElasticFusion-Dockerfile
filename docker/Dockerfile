@@ -43,6 +43,7 @@ RUN ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen \
 
 RUN git clone https://github.com/Daichou/ElasticFusion.git \
    && cd ElasticFusion/Core \
+   && sed -i "s/set(CUDA_ARCH_BIN/# set(CUDA_ARCH_BIN/" src/CMakeLists.txt \
    && mkdir build && cd build \
    && cmake ../src \
    && make -j8 \
