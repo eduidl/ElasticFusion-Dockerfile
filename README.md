@@ -1,6 +1,6 @@
 # ElasticFusion Dockerfile
 
-Dockerfile for use of [ElasticFusion](https://github.com/mp3guy/ElasticFusion)
+Dockerfile for use of [ElasticFusion](https://github.com/mp3guy/ElasticFusion) with RealSense
 
 ## Requirements
 
