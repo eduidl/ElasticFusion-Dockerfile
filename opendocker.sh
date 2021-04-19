@@ -12,7 +12,7 @@ docker run -it --rm \
   --privileged \
   --gpus all \
   -e DISPLAY=$DISPLAY \
-  -v $HOME/X11-unix:/tmp/X11-unix \
+  -v $HOME/.X11-unix:/tmp/.X11-unix \
   --mount type=bind,src=/dev,dst=/dev \
   --mount type=bind,src=$(pwd)/workspace,dst=/workspace/ \
   $1 \
